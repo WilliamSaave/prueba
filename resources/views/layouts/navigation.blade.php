@@ -5,10 +5,11 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
-                    </a>
-                </div>
+    <a href="{{ route('dashboard') }}">
+        <img src="{{ asset('images/logo.png') }}" alt="Logo" style="width: 130px; height: 60px;">
+    </a>
+</div>
+
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
@@ -18,22 +19,38 @@
                 </div>
             </div>
 
-            <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
-                <x-dropdown align="right" width="48">
-                    <x-slot name="trigger">
-                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                            <div>{{ Auth::user()->name }}</div>
+            <div class="flex justify-end">
+    @if (Auth::user()->profile_photo)
+        <img src="{{ asset('storage/' . Auth::user()->profile_photo) }}" alt="Profile Photo" style="width: 49px; height: 49px;" class="rounded-full">
+    @else
+        <img src="{{ asset('default-profile.png') }}" alt="Default Profile Photo" style="width: 49px; height: 49px;" class="rounded-full">
+    @endif
+</div>
 
-                            <div class="ms-1">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                        </button>
-                    </x-slot>
+
+<x-dropdown align="right" width="48">
+    <x-slot name="trigger">
+        <button class="inline-flex items-center px-3 py-1.5 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+            <div class="flex flex-col items-start">
+                <div class="text-lg font-medium">{{ Auth::user()->name }}</div>
+                <div class="text-sm text-gray-400 mt-1" style="text-align: left;">{{ Auth::user()->role }}</div>
+
+            </div>
+            
+            <div class="ms-1">
+                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    
+                </svg>
+            </div>
+        </button>
+    </x-slot>
+
+
+
 
                     <x-slot name="content">
+                        
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>

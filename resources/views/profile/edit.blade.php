@@ -3,6 +3,16 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Profile') }}
         </h2>
+        <div  class="flex items-center">
+    <span>{{ Auth::user()->name }}</span> 
+    @if (Auth::user()->profile_photo)
+    <img style="margin-left: 10px;" src="{{ asset('storage/' . Auth::user()->profile_photo) }}" alt="Profile Photo" class="w-16 h-16 rounded-full">
+@else
+    <img src="{{ asset('default-profile.png') }}" alt="Default Profile Photo" class="w-16 h-16 rounded-full">
+@endif
+
+</div>
+
     </x-slot>
 
     <div class="py-12">
