@@ -28,7 +28,7 @@
         id="dropdown-list" 
         class="hidden mt-2 space-y-2 bg-blue-500 border border-gray-200 rounded-lg shadow-lg transition-all duration-300">
         <li>
-            <a href="{{ route('lista.index') }}" 
+            <a href="{{ route('empleados.index') }}" 
                class="block py-2 px-4 text-white hover:bg-blue-700 rounded">
                 {{ __('Empleados') }}
             </a>

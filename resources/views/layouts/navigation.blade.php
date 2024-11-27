@@ -13,18 +13,16 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
+                
                 </div>
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
             <div class="flex justify-end">
     @if (Auth::user()->profile_photo)
-        <img src="{{ asset('storage/' . Auth::user()->profile_photo) }}" alt="Profile Photo" style="width: 49px; height: 49px;" class="rounded-full">
+        <img src="{{ asset('storage/' . Auth::user()->profile_photo) }}" alt="Profile Photo" style="width: 55px; height: 55px;"  class="bg-blue-600 text-white px-1 py-1 rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 flex items-center justify-center space-x-3 mx-auto">
     @else
-        <img src="{{ asset('default-profile.png') }}" alt="Default Profile Photo" style="width: 49px; height: 49px;" class="rounded-full">
+        <img src="{{ asset('default-profile.png') }}" alt="Default Profile Photo" style="width: 55px; height: 55px;" class="rounded-full">
     @endif
 </div>
 
